@@ -46,6 +46,10 @@ export interface ProjectItem {
   tech: string[];
   imageUrl?: string;
   linkUrl: string;
+  features?: string[];
+  highlights?: {
+    [key: string]: string;
+  };
 }
 
 export interface FeaturedProject extends ProjectItem {
@@ -66,6 +70,8 @@ export interface SocialLink {
 export interface Social {
   github: SocialLink;
   linkedin: SocialLink;
+  facebook?: SocialLink;
+  instagram?: SocialLink;
 }
 
 export interface Contact {

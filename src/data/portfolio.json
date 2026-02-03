@@ -185,6 +185,24 @@
     "dataHandling": "Asynchronous API integration with Axios and persistent NoSQL storage"
   }
 },
+{
+  "title": "Task Manager",
+  "description": "A full-stack offline-first task manager featuring optimistic UI updates, background data synchronization, and a robust PostgreSQL/Prisma backend. Designed for 100% availability even without an internet connection.",
+  "tech": ["React", "Node.js", "Prisma", "PostgreSQL", "Docker", "Framer Motion"],
+  "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129cba2?w=600&h=400&fit=crop",
+  "linkUrl": "https://task-manager001.vercel.app/",
+  "features": [
+    "Implemented Offline-First architecture with background sync.",
+    "Engineered zero-latency Optimistic UI updates.",
+    "Integrated sync status markers (Synced/Local-only).",
+    "Containerized entire stack using Docker Compose."
+  ],
+  "highlights": {
+    "architecture": "Offline-First with background synchronization",
+    "ui": "Zero-latency optimistic updates for better UX",
+    "deployment": "Full stack containerization using Docker"
+  }
+},
   {
     "title": "Zero Hunger Website",
     "description": "A comprehensive web platform dedicated to Sustainable Development Goal 2: Zero Hunger. Features an educational content hub with parallax design, dynamic JSON-driven merchandise shop with persistent cart functionality, interactive SVG-based sitemap, responsive image gallery, and integrated feedback system. Built with semantic HTML5, modern CSS3 (Flexbox, Grid, Parallax), and vanilla JavaScript with cookie-based state management. Deployed on Vercel with optimized assets and modular design system.",
