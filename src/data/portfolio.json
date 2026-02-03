@@ -1,0 +1,215 @@
+{
+  "personal": {
+    "firstName": "Yashith",
+    "lastName": "Chandeepa",
+    "role": "Software Engineer",
+    "bio": "I build accessible, pixel-perfect user interfaces that blend art with engineering. Passionate about React ecosystems and design systems.",
+    "availabilityBadge": "AVAILABLE FOR WORK",
+    "location": "Colombo, LK",
+    "timezone": "GMT+5:30",
+    "email": "yashithc.dev@gmail.com",
+    "cvUrl": "/Yashith_Chandeepa_CV.pdf",
+    "profileImageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+    "responseTimeNote": "Response time: Within 24 hours"
+  },
+  "stats": {
+    "yearsExperience": "4+",
+    "projectsCount": "25+",
+    "clientsCount": "10+"
+  },
+  "currentRole": {
+    "companyName": "TechCorp Inc.",
+    "label": "Currently working at"
+  },
+  "currentFocus": {
+    "title": "Advanced Design Systems",
+    "description": "Building scalable components libraries with modern CSS architecture."
+  },
+  "techStack": [
+    { "name": "React", "icon": "react" },
+    { "name": "Next.js", "icon": "nextjs" },
+    { "name": "TypeScript", "icon": "typescript" },
+    { "name": "HTML5", "icon": "html5" },
+    { "name": "CSS3", "icon": "css3" },
+    { "name": "Tailwind", "icon": "tailwind" },
+    { "name": "Node.js", "icon": "node" },
+    { "name": "JavaScript", "icon": "javascript" },
+    { "name": "Supabase", "icon": "supabase" },
+    { "name": "PostgreSQL", "icon": "postgresql" },
+    { "name": "Expo", "icon": "expo" },
+    { "name": "Jest", "icon": "jest" },
+    { "name": "Appium", "icon": "appium" },
+    { "name": "Selenium", "icon": "selenium" },
+    { "name": "Docker", "icon": "docker" },
+    { "name": "Figma", "icon": "figma" }
+  ],
+
+  "experience": [
+ {
+  "role": "Intern Software Engineer & QA",
+  "company": "Glamer Media",
+  "location": "Sri Lanka",
+  "start": "2025",
+  "end": "2026",
+  "highlights": [
+    "Implemented cross-platform mobile applications using React Native (Expo).",
+    "Designed and developed RESTful APIs with NestJS and PostgreSQL using TypeORM.",
+    "Automated test cases using Selenium and Appium to improve testing efficiency.",
+    "Executed manual testing, bug reporting, and regression testing.",
+    "Worked closely with developers and QA engineers to deliver stable features."
+  ]
+}
+
+],
+"education": [
+  {
+    "degree": "BSc (Hons) Software Engineering",
+    "institution": "University of Westminster",
+    "start": "2023",
+    "end": "2027",
+    "note": "Undergraduate at Informatics Institute of Technology (IIT), Sri Lanka"
+  },
+  {
+    "degree": "Advanced Level in Physical Science Stream & Ordinary Level",
+    "institution": "St. Aloysius' College, Galle",
+    "start": "2009",
+    "end": "2022",
+    "note": "Completed primary and secondary education"
+  }
+],
+ 
+  "featuredProject": {
+    "title": "AI Recruiter",
+    "description": "A comprehensive web-based platform for creating, scheduling, and conducting AI-powered interviews. Features real-time voice interviews using Vapi AI, automated interview creation workflows, candidate management dashboard, and detailed analytics. Built with Next.js App Router, includes automated testing with Jest, and deployed on Vercel with CI/CD via GitHub Actions.",
+    "tech": [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Vapi AI SDK",
+      "Supabase",
+      "TypeScript",
+      "Radix UI",
+      "Jest",
+      "React Testing Library",
+      "Vercel",
+      "GitHub Actions"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=400&fit=crop",
+    "linkUrl": "https://ai-recruiterapp.vercel.app",
+    "label": "FEATURED PROJECT",
+    "features": [
+      "🎙️ Real-time AI-powered voice interviews",
+      "📝 Guided interview creation wizard",
+      "🔗 Shareable interview links",
+      "📊 Comprehensive analytics dashboard",
+      "📅 Interview scheduling system",
+      "🧪 Full test coverage with Jest",
+      "🚀 CI/CD with GitHub Actions",
+      "🔐 Supabase authentication"
+    ],
+    "highlights": {
+      "aiIntegration": "Vapi SDK for conversational AI interviews",
+      "testing": "Jest + React Testing Library with automated CI",
+      "deployment": "Vercel with GitHub Actions workflow",
+      "architecture": "Next.js App Router with modular component structure"
+    }
+  },
+  "projects": [
+   {
+    "title": "Korean Support",
+    "description": "A comprehensive mobile application designed to help users learn practical, everyday Korean phrases through audio playback, romanization, and multilingual translations. Features secure authentication with Supabase, high-quality audio pronunciation, and support for 5 languages (English, Sinhala, Tamil, Hindi, Bengali). Built with React Native (Expo) and includes automated testing with Jest, deployed on EAS with PostgreSQL backend.",
+    "tech": [
+      "React Native",
+      "Expo",
+      "Expo Router",
+      "Supabase",
+      "PostgreSQL",
+      "TypeScript",
+      "NativeWind",
+      "Expo AV",
+      "Lucide Icons",
+      "Jest",
+      "EAS Build"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?w=600&h=400&fit=crop",
+    "linkUrl": "https://github.com/yashith03/Korean-Support",
+    "features": [
+      "🔐 Secure authentication with Supabase Auth",
+      "🗣️ Korean phrases with native text, romanization & translations",
+      "🔊 High-quality audio pronunciation playback",
+      "🌐 Multilingual support (5 languages)",
+      "🎨 Clean, modern, mobile-first UI with NativeWind",
+      "🔒 Database security using Row Level Security (RLS)",
+      "⚙️ Automatic user profile creation via PostgreSQL triggers",
+      "🧪 Full test coverage with Jest"
+    ],
+    "highlights": {
+      "authentication": "Supabase Auth with automatic profile creation via PostgreSQL triggers",
+      "testing": "Jest with comprehensive test coverage",
+      "deployment": "EAS Build for iOS and Android",
+      "architecture": "Expo Router with modular component structure and secure backend"
+    }
+  },
+  {
+    "title": "Zero Hunger Website",
+    "description": "A comprehensive web platform dedicated to Sustainable Development Goal 2: Zero Hunger. Features an educational content hub with parallax design, dynamic JSON-driven merchandise shop with persistent cart functionality, interactive SVG-based sitemap, responsive image gallery, and integrated feedback system. Built with semantic HTML5, modern CSS3 (Flexbox, Grid, Parallax), and vanilla JavaScript with cookie-based state management. Deployed on Vercel with optimized assets and modular design system.",
+    "tech": [
+      "HTML5",
+      "CSS3",
+      "Vanilla JavaScript",
+      "JSON",
+      "Fetch API",
+      "Cookie Storage",
+      "CSS Grid",
+      "Flexbox",
+      "Parallax Design",
+      "SVG",
+      "Vercel"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=400&fit=crop",
+    "linkUrl": "https://zero-hunger-website.vercel.app/",
+    "features": [
+      "🛒 Dynamic JSON-driven merch shop",
+      "💾 Cookie-based cart persistence across sessions",
+      "🖼️ Responsive CSS Grid gallery system",
+      "🗺️ Interactive SVG sitemap visualization",
+      "📝 Form validation for feedback & checkout",
+      "🎨 Modern parallax hero design",
+      "📚 Educational content on food security",
+      "⚡ Optimized assets for fast loading"
+    ],
+    "highlights": {
+      "stateManagement": "Browser cookies for persistent cart data",
+      "architecture": "Modular CSS design system with separated Navigation, Footer, and Content styles",
+      "deployment": "Vercel deployment with optimized performance",
+      "dataHandling": "Fetch API for dynamic product loading from JSON"
+    }
+  }
+
+  ],
+  "services": [
+    { "title": "Web Development", "icon": "globe" },
+    { "title": "UI/UX Design", "icon": "palette" },
+    { "title": "Mobile Apps", "icon": "smartphone" },
+    { "title": "Consulting", "icon": "briefcase" }
+  ],
+  "social": {
+    "github": {
+      "label": "GitHub",
+      "url": "https://github.com",
+      "handle": "yashith"
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "url": "https://linkedin.com",
+      "handle": "yashith-chandeepa"
+    }
+  },
+  "contact": {
+    "heading": "Have a project in mind?",
+    "description": "I'm currently available for freelance projects and open to new opportunities. Let's discuss how we can work together to build something amazing.",
+    "email": "yashithc.dev@gmail.com",
+    "ctaText": "Let's Talk",
+    "responseTime": "Response time: Within 24 hours"
+  }
+}
