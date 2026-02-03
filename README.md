@@ -1,16 +1,86 @@
-# React + Vite
+# 🚀 Modern Glassmorphism Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, high-performance developer portfolio built with **React**, **Vite**, **Tailwind CSS**, and **Framer Motion**. Featuring a custom-built GitHub contribution graph, dynamic project showcases, and a sleek bento-style design.
 
-Currently, two official plugins are available:
+![Portfolio Preview](https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&h=600&fit=crop)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- **💎 Modern Aesthetic**: Full glassmorphism design system with smooth gradients and backdrop blurs.
+- **📊 Live GitHub Graph**: Custom-themed, pixel-perfect GitHub contribution graph fetching real-time data via GraphQL.
+- **📱 Responsive Layout**: Fully optimized for mobile, tablet, and desktop screens.
+- **🎭 Smooth Animations**: Powered by Framer Motion for staggered entrances, hover effects, and modular transitions.
+- **📂 Dynamic Data**: Project and personal information centralized in a single JSON schema for easy updates.
+- **🚀 Performance-First**: Built with Vite for rapid development and optimized production bundles.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠 Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend**: [React 18](https://reactjs.org/)
+- **Bundler**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Data Fetching**: GitHub GraphQL API
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+- **Type Safety**: [TypeScript](https://www.typescriptlang.org/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Getting Started
+
+### 1. Prerequisites
+- Node.js (Latest LTS recommended)
+- A GitHub Personal Access Token (PAT)
+
+### 2. Installation
+```bash
+# Clone the repository
+git clone https://github.com/yashith03/Portfolio.git
+
+# Enter the directory
+cd Portfolio
+
+# Install dependencies
+npm install
+```
+
+### 3. Environment Setup
+Create a `.env` file in the root directory:
+```env
+VITE_GITHUB_TOKEN=your_github_personal_access_token
+```
+
+### 4. Run Locally
+```bash
+npm run dev
+```
+
+## 📂 Project Structure
+
+```text
+src/
+├── components/
+│   ├── ui/           # Reusable atomic components (Cards, Buttons, etc.)
+│   ├── sections/     # Main page sections (Hero, Projects, TechStack)
+├── data/
+│   └── portfolio.json # The source of truth for all content
+├── lib/
+│   ├── useGithubContributions.ts # API logic for GitHub activity
+│   └── usePortfolioData.ts       # Hook to access global portfolio data
+├── App.tsx           # Main application entry
+└── main.tsx          # React hydration
+```
+
+## 📈 GitHub Graph Configuration
+
+The repository includes a highly customized `GithubContributionGraph` component. To update the displayed user:
+1. Open `src/App.tsx`
+2. Change the `username` prop:
+   ```tsx
+   <GithubContributionGraph username="yashith03" />
+   ```
+
+## 📄 License
+
+Individual/Personal use. Created by [Yashith Chandeepa](https://github.com/yashith03).
+
+---
+
+Designed with ❤️ to showcase art through engineering.
