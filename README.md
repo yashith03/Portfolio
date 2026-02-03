@@ -76,11 +76,6 @@ The repository includes a highly customized `GithubContributionGraph` component.
    ```tsx
    <GithubContributionGraph username="yashith03" />
    ```
-
-## 📄 License
-
-Individual/Personal use. Created by [Yashith Chandeepa](https://github.com/yashith03).
-
 ---
 
 Designed with ❤️ to showcase art through engineering.
