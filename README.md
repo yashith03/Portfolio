@@ -68,14 +68,11 @@ src/
 └── main.tsx          # React hydration
 ```
 
-## 📈 GitHub Graph Configuration
 
-The repository includes a highly customized `GithubContributionGraph` component. To update the displayed user:
-1. Open `src/App.tsx`
-2. Change the `username` prop:
-   ```tsx
-   <GithubContributionGraph username="yashith03" />
-   ```
+## 📄 License
+
+Individual/Personal use. Created by [Yashith Chandeepa](https://github.com/yashith03).
+
 ---
 
 Designed with ❤️ to showcase art through engineering.
