@@ -151,6 +151,41 @@
     }
   },
   {
+  "title": "Real-Time Event Ticketing System",
+  "description": "A robust end-to-end ticketing platform featuring a Spring Boot backend, React frontend, and a Java CLI. It simulates real-time ticket booking, releasing, and monitoring with multi-threaded concurrency. The system supports dynamic configuration of ticket pools, vendor/customer simulation, and real-time transaction logging with MongoDB persistence. Orchestrated with Docker for seamless environment parity.",
+  "tech": [
+    "Java",
+    "Spring Boot",
+    "React",
+    "MongoDB",
+    "Multi-threading",
+    "REST API",
+    "Axios",
+    "Recharts",
+    "Docker",
+    "Docker Compose",
+    "Maven"
+  ],
+  "imageUrl": "https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?w=600&h=400&fit=crop",
+  "linkUrl": "https://real-time-event-ticketing-system-jet.vercel.app/",
+  "features": [
+    "🧵 Multi-threaded synchronization for ticket allocation",
+    "📊 Real-time dashboard with live progress charts",
+    "⚙️ Dynamic configuration for release & retrieval rates",
+    "🗄️ Persistent transaction logging with MongoDB",
+    "🖥️ Java CLI simulation for console-based testing",
+    "🐳 Orchestrated deployment via Docker Compose",
+    "🔒 Thread-safe operations using ReentrantLocks",
+    "📝 Live transaction logs with real-time level monitoring"
+  ],
+  "highlights": {
+    "stateManagement": "React Hooks for UI state & ReentrantLocks for backend concurrency",
+    "architecture": "Modular full-stack design (Spring Boot REST API, React SPA, and Java Core)",
+    "deployment": "Containerized microservices architecture with Vercel frontend hosting",
+    "dataHandling": "Asynchronous API integration with Axios and persistent NoSQL storage"
+  }
+},
+  {
     "title": "Zero Hunger Website",
     "description": "A comprehensive web platform dedicated to Sustainable Development Goal 2: Zero Hunger. Features an educational content hub with parallax design, dynamic JSON-driven merchandise shop with persistent cart functionality, interactive SVG-based sitemap, responsive image gallery, and integrated feedback system. Built with semantic HTML5, modern CSS3 (Flexbox, Grid, Parallax), and vanilla JavaScript with cookie-based state management. Deployed on Vercel with optimized assets and modular design system.",
     "tech": [
@@ -196,13 +231,23 @@
   "social": {
     "github": {
       "label": "GitHub",
-      "url": "https://github.com",
-      "handle": "yashith"
+      "url": "https://github.com/yashith03",
+      "handle": "yashith03"
     },
     "linkedin": {
       "label": "LinkedIn",
       "url": "https://linkedin.com",
       "handle": "yashith-chandeepa"
+    },
+      "facebook": {
+      "label": "Facebook",
+      "url": "https://facebook.com",
+      "handle": "yashith.chandeepa.1"
+    },
+    "instagram": {
+      "label": "Instagram",
+      "url": "https://instagram.com",
+      "handle": "yashith_chandeepa" 
     }
   },
   "contact": {

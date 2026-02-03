@@ -4,7 +4,7 @@ import { HeroBento } from './components/sections/HeroBento';
 import { TechStack } from './components/sections/TechStack';
 import { ExperienceEducation } from './components/sections/ExperienceEducation';
 import { Projects } from './components/sections/Projects';
-
+import GithubContributionGraph from './components/ui/GithubContributionGraph';
 import { SocialLinks } from './components/sections/SocialLinks';
 import { ContactCTA } from './components/sections/ContactCTA';
 
@@ -48,6 +48,14 @@ function App() {
         {/* Projects */}
         <section id="projects">
           <Projects />
+        </section>
+
+        {/* Divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+        {/* GitHub Activity */}
+        <section id="github">
+          <GithubContributionGraph username="yashith03" />
         </section>
 
         {/* Divider */}
