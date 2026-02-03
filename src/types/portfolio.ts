@@ -46,6 +46,7 @@ export interface ProjectItem {
   tech: string[];
   imageUrl?: string;
   linkUrl: string;
+  githubUrl?: string;
   features?: string[];
   highlights?: {
     [key: string]: string;

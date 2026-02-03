@@ -96,6 +96,7 @@
     ],
     "imageUrl": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=400&fit=crop",
     "linkUrl": "https://ai-recruiterapp.vercel.app",
+    "githubUrl": "https://github.com/yashith03/ai-recruiter",
     "label": "FEATURED PROJECT",
     "features": [
       "🎙️ Real-time AI-powered voice interviews",
@@ -133,6 +134,7 @@
     ],
     "imageUrl": "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?w=600&h=400&fit=crop",
     "linkUrl": "https://github.com/yashith03/Korean-Support",
+    "githubUrl": "https://github.com/yashith03/Korean-Support",
     "features": [
       "🔐 Secure authentication with Supabase Auth",
       "🗣️ Korean phrases with native text, romanization & translations",
@@ -168,6 +170,7 @@
   ],
   "imageUrl": "https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?w=600&h=400&fit=crop",
   "linkUrl": "https://real-time-event-ticketing-system-jet.vercel.app/",
+  "githubUrl": "https://github.com/yashith03/Real-time-Event-Ticketing-System",
   "features": [
     "🧵 Multi-threaded synchronization for ticket allocation",
     "📊 Real-time dashboard with live progress charts",
@@ -191,6 +194,7 @@
   "tech": ["React", "Node.js", "Prisma", "PostgreSQL", "Docker", "Framer Motion"],
   "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129cba2?w=600&h=400&fit=crop",
   "linkUrl": "https://task-manager001.vercel.app/",
+  "githubUrl": "https://github.com/yashith03/Doodle-Tasks",
   "features": [
     "Implemented Offline-First architecture with background sync.",
     "Engineered zero-latency Optimistic UI updates.",
@@ -221,6 +225,7 @@
     ],
     "imageUrl": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=400&fit=crop",
     "linkUrl": "https://zero-hunger-website.vercel.app/",
+    "githubUrl": "https://github.com/yashith03/Zero-Hunger-Website",
     "features": [
       "🛒 Dynamic JSON-driven merch shop",
       "💾 Cookie-based cart persistence across sessions",

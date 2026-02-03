@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaTimes, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaTimes, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { Tag } from './Tag';
 
 interface Project {
@@ -9,6 +9,7 @@ interface Project {
   tech: string[];
   imageUrl?: string;
   linkUrl: string;
+  githubUrl?: string;
   label?: string;
   features?: string[];
   highlights?: {
@@ -77,14 +78,14 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
         {/* Details Section */}
         <div className="flex flex-col">
           {/* Title */}
-          <div className="p-6 md:p-8">
+          <div className="p-6 md:p-8 pb-0">
             <h3 className="text-3xl font-bold text-white">
               {project.title}
             </h3>
           </div>
 
           {/* Tech Stack */}
-          <div className="p-6 md:p-8">
+          <div className="p-6 md:p-8 py-6">
             <div className="flex flex-wrap gap-2">
               {project.tech.map((t, idx) => (
                 <Tag key={idx}>{t}</Tag>
@@ -104,7 +105,8 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <h4 className="text-lg font-semibold text-white mb-4">Key Features</h4>
                 <ul className="space-y-2">
                   {project.features.map((feature, idx) => (
-                    <li key={idx} className="text-sm text-white/70 leading-relaxed">
+                    <li key={idx} className="text-sm text-white/70 leading-relaxed flex gap-3">
+                      <span className="text-cyan-400 shrink-0">•</span>
                       {feature}
                     </li>
                   ))}
@@ -129,14 +131,27 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               </div>
             )}
 
-            <a
-              href={project.linkUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-full px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl transition-all shadow-lg shadow-cyan-500/20 gap-2"
-            >
-              Visit Project <FaExternalLinkAlt className="w-4 h-4" />
-            </a>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <a
+                href={project.linkUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl transition-all shadow-lg shadow-cyan-500/20 gap-2"
+              >
+                Visit Project <FaExternalLinkAlt className="w-4 h-4" />
+              </a>
+              
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl transition-all border border-white/10 gap-2"
+                >
+                  <FaGithub className="w-5 h-5" /> GitHub Code
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </motion.div>
