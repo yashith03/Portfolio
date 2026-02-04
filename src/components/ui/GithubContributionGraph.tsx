@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fetchContributions, ContributionCalendar } from "../../lib/useGithubContributions";
 
@@ -15,6 +15,7 @@ export default function GithubContributionGraph({ username }: GithubContribution
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [hoveredDay, setHoveredDay] = useState<{ date: string; count: number; x: number; y: number } | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -85,9 +86,12 @@ export default function GithubContributionGraph({ username }: GithubContribution
   const monthLabels = getMonthLabels();
 
   return (
-    <div className="w-full bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 p-8 shadow-2xl relative overflow-hidden group hover:border-white/20 transition-all duration-300">
+    <div 
+      ref={containerRef}
+      className="w-full bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 p-8 shadow-2xl relative overflow-visible group hover:border-white/20 transition-all duration-300"
+    >
       {/* Background accent glow */}
-      <div className="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/5 rounded-full blur-3xl group-hover:bg-cyan-500/10 transition-colors duration-500" />
+      <div className="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/5 rounded-full blur-3xl group-hover:bg-cyan-500/10 transition-colors duration-500 pointer-events-none" />
 
       {/* Header */}
       <div className="flex items-center justify-between mb-10 flex-wrap gap-6 relative z-10">
@@ -162,13 +166,14 @@ export default function GithubContributionGraph({ username }: GithubContribution
                 {week.contributionDays.map((day) => (
                   <div
                     key={day.date}
-                    onMouseEnter={(e) => {
-                      const rect = e.currentTarget.getBoundingClientRect();
+                    onMouseMove={(e) => {
+                      if (!containerRef.current) return;
+                      const rect = containerRef.current.getBoundingClientRect();
                       setHoveredDay({
                         date: day.date,
                         count: day.contributionCount,
-                        x: rect.left + rect.width / 2,
-                        y: rect.top
+                        x: e.clientX - rect.left,
+                        y: e.clientY - rect.top
                       });
                     }}
                     onMouseLeave={() => setHoveredDay(null)}
@@ -214,18 +219,18 @@ export default function GithubContributionGraph({ username }: GithubContribution
       <AnimatePresence>
         {hoveredDay && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 0 }}
-            animate={{ opacity: 1, scale: 1, y: -12 }}
-            exit={{ opacity: 0, scale: 0.9, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9, x: 20 }}
+            animate={{ opacity: 1, scale: 1, x: 25 }}
+            exit={{ opacity: 0, scale: 0.9, x: 20 }}
             style={{ 
-              position: 'fixed',
+              position: 'absolute',
               left: hoveredDay.x,
               top: hoveredDay.y,
-              transform: 'translateX(-50%)',
+              transform: 'translateY(-50%)',
               pointerEvents: 'none',
               zIndex: 100
             }}
-            className="px-4 py-2.5 bg-slate-900/90 border border-white/10 rounded-xl shadow-2xl backdrop-blur-xl"
+            className="px-4 py-2.5 bg-slate-900/95 border border-white/10 rounded-xl shadow-2xl backdrop-blur-xl min-w-[140px]"
           >
             <div className="text-[10px] text-cyan-400 font-bold uppercase tracking-widest mb-1">
               {new Date(hoveredDay.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
@@ -233,8 +238,8 @@ export default function GithubContributionGraph({ username }: GithubContribution
             <div className="text-sm text-white font-bold">
               {hoveredDay.count} {hoveredDay.count === 1 ? 'contribution' : 'contributions'}
             </div>
-            {/* Arrow */}
-            <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-slate-900/90" />
+            {/* Side Arrow */}
+            <div className="absolute top-1/2 -left-[6px] -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[6px] border-r-slate-900/95" />
           </motion.div>
         )}
       </AnimatePresence>
