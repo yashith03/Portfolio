@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fetchContributions, ContributionCalendar } from "../../lib/useGithubContributions";
 
@@ -10,32 +10,50 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 
 export default function GithubContributionGraph({ username }: GithubContributionGraphProps) {
   const currentYear = new Date().getFullYear();
+  const YEARS = useMemo(() => [currentYear - 2, currentYear - 1, currentYear], [currentYear]);
+  
   const [selectedYear, setSelectedYear] = useState(currentYear);
-  const [calendar, setCalendar] = useState<ContributionCalendar | null>(null);
+  const [dataByYear, setDataByYear] = useState<Record<number, ContributionCalendar>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [hoveredDay, setHoveredDay] = useState<{ date: string; count: number; x: number; y: number } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setLoading(true);
-    setError(null);
-    
-    fetchContributions(username, selectedYear)
-      .then(setCalendar)
-      .catch((err) => {
+    async function loadAllData() {
+      setLoading(true);
+      setError(null);
+      
+      try {
+        const results = await Promise.all(
+          YEARS.map(year => fetchContributions(username, year))
+        );
+
+        const mapped: Record<number, ContributionCalendar> = {};
+        YEARS.forEach((year, index) => {
+          mapped[year] = results[index];
+        });
+
+        setDataByYear(mapped);
+      } catch (err) {
         console.error("Failed to fetch GitHub contributions:", err);
         setError("Failed to load GitHub activity");
-      })
-      .finally(() => setLoading(false));
-  }, [username, selectedYear]);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-  const getMonthLabels = () => {
-    if (!calendar) return [];
+    loadAllData();
+  }, [username, YEARS]);
+
+  const activeCalendar = dataByYear[selectedYear];
+
+  const monthLabels = useMemo(() => {
+    if (!activeCalendar) return [];
     const labels: { month: string; offset: number }[] = [];
     let lastMonth = -1;
 
-    calendar.weeks.forEach((week, index) => {
+    activeCalendar.weeks.forEach((week, index) => {
       const firstDay = new Date(week.firstDay);
       const month = firstDay.getMonth();
       if (month !== lastMonth && index > 0) {
@@ -44,6 +62,14 @@ export default function GithubContributionGraph({ username }: GithubContribution
       }
     });
     return labels;
+  }, [activeCalendar]);
+
+  const getColor = (count: number) => {
+    if (count === 0) return 'rgba(255,255,255,0.05)';
+    if (count <= 3) return '#0e4429';
+    if (count <= 6) return '#006d32';
+    if (count <= 9) return '#26a641';
+    return '#39d353';
   };
 
   if (loading) {
@@ -66,7 +92,7 @@ export default function GithubContributionGraph({ username }: GithubContribution
     );
   }
 
-  if (error || !calendar) {
+  if (error || !activeCalendar) {
     return (
       <div className="w-full bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 p-8 text-center">
         <h3 className="text-white/90 mb-2 font-semibold">GitHub Activity</h3>
@@ -74,16 +100,6 @@ export default function GithubContributionGraph({ username }: GithubContribution
       </div>
     );
   }
-
-  const getColor = (count: number) => {
-    if (count === 0) return 'rgba(255,255,255,0.05)';
-    if (count <= 3) return '#0e4429';
-    if (count <= 6) return '#006d32';
-    if (count <= 9) return '#26a641';
-    return '#39d353';
-  };
-
-  const monthLabels = getMonthLabels();
 
   return (
     <div 
@@ -95,22 +111,27 @@ export default function GithubContributionGraph({ username }: GithubContribution
 
       {/* Header */}
       <div className="flex items-center justify-between mb-10 flex-wrap gap-6 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="flex flex-col gap-1"
-        >
+        <div className="flex flex-col gap-1">
           <h3 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
             GitHub Activity
             <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
           </h3>
-          <p className="text-white/60 font-medium">
-            <span className="text-cyan-400">{calendar.totalContributions.toLocaleString()}</span> contributions in {selectedYear}
-          </p>
-        </motion.div>
+          <AnimatePresence mode="wait">
+            <motion.p 
+              key={selectedYear}
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              transition={{ duration: 0.2 }}
+              className="text-white/60 font-medium"
+            >
+              <span className="text-cyan-400">{activeCalendar.totalContributions.toLocaleString()}</span> contributions in {selectedYear}
+            </motion.p>
+          </AnimatePresence>
+        </div>
         
         <div className="flex items-center gap-1.5 bg-white/5 rounded-xl border border-white/10 p-1.5 shadow-inner">
-          {[currentYear - 2, currentYear - 1, currentYear].map((year) => (
+          {YEARS.map((year) => (
             <button
               key={year}
               onClick={() => setSelectedYear(year)}
@@ -128,66 +149,70 @@ export default function GithubContributionGraph({ username }: GithubContribution
 
       {/* Graph Area */}
       <div className="relative z-10">
-        {/* Month Labels */}
-        <div className="flex mb-4 ml-[34px]">
-          <div className="flex gap-[4px] relative" style={{ width: `${calendar.weeks.length * 15}px` }}>
-            {monthLabels.map((label, index) => (
-              <span
-                key={index}
-                className="absolute text-[11px] font-bold text-white/30 uppercase tracking-widest"
-                style={{ left: `${label.offset * 15}px` }}
-              >
-                {label.month}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex gap-[14px]">
-          {/* Weekday Labels */}
-          <div className="flex flex-col gap-[4px] text-[10px] font-bold text-white/20 pt-[22px] uppercase tracking-tighter">
-            <div className="h-[11px] flex items-center">Mon</div>
-            <div className="h-[11px]" />
-            <div className="h-[11px] flex items-center">Wed</div>
-            <div className="h-[11px]" />
-            <div className="h-[11px] flex items-center">Fri</div>
-          </div>
-
-          {/* Grid */}
-          <div className="flex gap-[4px] overflow-x-auto pb-6 custom-scrollbar">
-            {calendar.weeks.map((week, weekIndex) => (
-              <motion.div 
-                key={weekIndex} 
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: weekIndex * 0.005, duration: 0.3 }}
-                className="flex flex-col gap-[4px]"
-              >
-                {week.contributionDays.map((day) => (
-                  <div
-                    key={day.date}
-                    onMouseMove={(e) => {
-                      if (!containerRef.current) return;
-                      const rect = containerRef.current.getBoundingClientRect();
-                      setHoveredDay({
-                        date: day.date,
-                        count: day.contributionCount,
-                        x: e.clientX - rect.left,
-                        y: e.clientY - rect.top
-                      });
-                    }}
-                    onMouseLeave={() => setHoveredDay(null)}
-                    className="w-[11px] h-[11px] rounded-[2px] transition-all duration-300 hover:scale-150 hover:z-20 hover:shadow-[0_0_10px_rgba(255,255,255,0.2)] cursor-crosshair opacity-80 hover:opacity-100"
-                    style={{ 
-                      backgroundColor: getColor(day.contributionCount),
-                      border: day.contributionCount === 0 ? '1px solid rgba(255,255,255,0.03)' : 'none'
-                    }}
-                  />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedYear}
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -10 }}
+            transition={{ duration: 0.2 }}
+          >
+            {/* Month Labels */}
+            <div className="flex mb-4 ml-[34px]">
+              <div className="flex gap-[4px] relative" style={{ width: `${activeCalendar.weeks.length * 15}px` }}>
+                {monthLabels.map((label, index) => (
+                  <span
+                    key={index}
+                    className="absolute text-[11px] font-bold text-white/30 uppercase tracking-widest"
+                    style={{ left: `${label.offset * 15}px` }}
+                  >
+                    {label.month}
+                  </span>
                 ))}
-              </motion.div>
-            ))}
-          </div>
-        </div>
+              </div>
+            </div>
+
+            <div className="flex gap-[14px]">
+              {/* Weekday Labels */}
+              <div className="flex flex-col gap-[4px] text-[10px] font-bold text-white/20 pt-[22px] uppercase tracking-tighter">
+                <div className="h-[11px] flex items-center">Mon</div>
+                <div className="h-[11px]" />
+                <div className="h-[11px] flex items-center">Wed</div>
+                <div className="h-[11px]" />
+                <div className="h-[11px] flex items-center">Fri</div>
+              </div>
+
+              {/* Grid */}
+              <div className="flex gap-[4px] overflow-x-auto pb-6 custom-scrollbar">
+                {activeCalendar.weeks.map((week, weekIndex) => (
+                  <div key={weekIndex} className="flex flex-col gap-[4px]">
+                    {week.contributionDays.map((day) => (
+                      <div
+                        key={day.date}
+                        onMouseMove={(e) => {
+                          if (!containerRef.current) return;
+                          const rect = containerRef.current.getBoundingClientRect();
+                          setHoveredDay({
+                            date: day.date,
+                            count: day.contributionCount,
+                            x: e.clientX - rect.left,
+                            y: e.clientY - rect.top
+                          });
+                        }}
+                        onMouseLeave={() => setHoveredDay(null)}
+                        className="w-[11px] h-[11px] rounded-[2px] transition-all duration-300 hover:scale-150 hover:z-20 hover:shadow-[0_0_10px_rgba(255,255,255,0.2)] cursor-crosshair opacity-80 hover:opacity-100"
+                        style={{ 
+                          backgroundColor: getColor(day.contributionCount),
+                          border: day.contributionCount === 0 ? '1px solid rgba(255,255,255,0.03)' : 'none'
+                        }}
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Footer / Legend */}
