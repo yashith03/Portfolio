@@ -76,8 +76,58 @@
     "end": "2022",
     "note": "Completed primary and secondary education"
   }
-],
- 
+  ],
+  "learningAndCertifications": [
+    {
+      "title": "Full Stack Web Development Professional Certificate",
+      "provider": "Meta (Coursera)",
+      "date": "2024",
+      "type": "certification",
+      "status": "completed",
+      "url": "https://coursera.org"
+    },
+    {
+      "title": "AI Innovation Hackathon - Finalist",
+      "provider": "University Challenge",
+      "date": "2024",
+      "type": "competition",
+      "status": "completed"
+    },
+    {
+      "title": "Cloud Computing Fundamentals",
+      "provider": "Google Cloud",
+      "date": "2024",
+      "type": "course",
+      "status": "completed"
+    },
+    {
+      "title": "Advanced Design Systems & UI Architecture",
+      "provider": "Self-Learning Focus",
+      "date": "Present",
+      "type": "focus",
+      "status": "in-progress"
+    }
+  ],
+  "qaHighlights": [
+    {
+      "category": "Automation Testing",
+      "skills": ["Appium", "Selenium", "Jest", "React Testing Library"],
+      "description": "Expertise in building robust automated test suites for mobile and web applications, ensuring high reliability and faster release cycles.",
+      "icon": "automation"
+    },
+    {
+      "category": "Testing Methodologies",
+      "skills": ["Manual", "Regression", "Smoke", "API Testing"],
+      "description": "Comprehensive experience in diverse testing strategies, from core manual exploration to complex API validation using modern tools.",
+      "icon": "methodology"
+    },
+    {
+      "category": "Quality Infrastructure",
+      "skills": ["Bug Lifecycle", "Postman", "GitHub Actions", "Excel"],
+      "description": "Streamlining the development workflow with effective bug reporting, tracking, and continuous integration of test cases.",
+      "icon": "vial"
+    }
+  ],
   "featuredProject": {
     "title": "AI Recruiter",
     "description": "A comprehensive web-based platform for creating, scheduling, and conducting AI-powered interviews. Features real-time voice interviews using Vapi AI, automated interview creation workflows, candidate management dashboard, and detailed analytics. Built with Next.js App Router, includes automated testing with Jest, and deployed on Vercel with CI/CD via GitHub Actions.",

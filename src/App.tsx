@@ -1,8 +1,10 @@
-import React from 'react';
+
 import { Navigation } from './components/Navigation';
 import { HeroBento } from './components/sections/HeroBento';
 import { TechStack } from './components/sections/TechStack';
 import { ExperienceEducation } from './components/sections/ExperienceEducation';
+import { LearningCertifications } from './components/sections/LearningCertifications';
+import { QualityAssurance } from './components/sections/QualityAssurance';
 import { Projects } from './components/sections/Projects';
 import GithubContributionGraph from './components/ui/GithubContributionGraph';
 import { SocialLinks } from './components/sections/SocialLinks';
@@ -40,6 +42,22 @@ function App() {
         {/* Experience & Education */}
         <section id="experience">
           <ExperienceEducation />
+        </section>
+
+        {/* Divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+        {/* Learning & Certifications */}
+        <section id="learning">
+          <LearningCertifications />
+        </section>
+
+        {/* Divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+        {/* Quality Assurance */}
+        <section id="qa">
+          <QualityAssurance />
         </section>
 
         {/* Divider */}

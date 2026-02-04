@@ -83,6 +83,22 @@ export interface Contact {
   responseTime: string;
 }
 
+export interface LearningItem {
+  title: string;
+  provider: string;
+  date: string;
+  type: 'course' | 'certification' | 'workshop' | 'competition' | 'focus';
+  url?: string;
+  status?: 'completed' | 'in-progress';
+}
+
+export interface QAHighlight {
+  category: string;
+  skills: string[];
+  description: string;
+  icon: string;
+}
+
 export interface PortfolioData {
   personal: PersonalInfo;
   stats: Stats;
@@ -97,6 +113,8 @@ export interface PortfolioData {
   techStack: TechStackItem[];
   experience: ExperienceItem[];
   education: EducationItem[];
+  learningAndCertifications: LearningItem[];
+  qaHighlights: QAHighlight[];
   featuredProject: FeaturedProject;
   projects: ProjectItem[];
   services: ServiceItem[];

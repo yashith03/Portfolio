@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const sections = [
   { id: 'hero', label: 'Home' },
   { id: 'tech-stack', label: 'Tech Stack' },
   { id: 'experience', label: 'Experience' },
+  { id: 'learning', label: 'Learning' },
+  { id: 'qa', label: 'QA' },
   { id: 'projects', label: 'Projects' },
   { id: 'contact', label: 'Contact' },
 ];
