@@ -14,17 +14,6 @@ A premium, high-performance developer portfolio for a **Software Engineering Und
 - **🎭 Smooth Animations**: Powered by Framer Motion for staggered entrances, hover effects, and modular transitions.
 - **📂 Dynamic Data**: Project and personal information centralized in a structured JSON schema for easy updates.
 
-## 🛠 Tech Stack
-
-- **Frontend**: [React 18](https://reactjs.org/), [Next.js](https://nextjs.org/)
-- **Languages**: TypeScript, JavaScript, Java, Python
-- **Backend & Database**: Node.js, NestJS, Express.js, Prisma, PostgreSQL, MongoDB, Supabase
-- **Mobile**: Expo (React Native)
-- **Testing**: Jest, Selenium, Appium
-- **DevOps**: Docker, GitHub Actions (CI/CD), Vercel
-- **Styling**: Tailwind CSS, CSS3, HTML5
-- **Animations**: Framer Motion
-- **Design**: Figma
 
 ## 🚀 Getting Started
 
