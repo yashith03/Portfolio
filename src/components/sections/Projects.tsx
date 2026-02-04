@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { FaExternalLinkAlt } from 'react-icons/fa';
 import { usePortfolioData } from '../../lib/usePortfolioData';
 import { Card } from '../ui/Card';
 import { Tag } from '../ui/Tag';
@@ -63,7 +62,7 @@ export function Projects() {
               <div
                 className="inline-flex items-center gap-2 text-sm font-medium text-white/40 group-hover:text-cyan-400 transition-colors pt-4 border-t border-white/5"
               >
-                View Project <FaExternalLinkAlt className="w-3 h-3" />
+                View Details <span className="text-xl">→</span>
               </div>
             </div>
           </Card>

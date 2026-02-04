@@ -8,6 +8,7 @@ interface Project {
   description: string;
   tech: string[];
   imageUrl?: string;
+  images?: string[];
   linkUrl: string;
   githubUrl?: string;
   label?: string;
@@ -57,22 +58,81 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           <FaTimes className="w-5 h-5" />
         </button>
 
-        {/* Image Section (Carousel Placeholder) */}
-        <div className="w-full h-64 md:h-80 overflow-hidden bg-white/5 relative shrink-0">
-            <img
-            src={project.imageUrl}
-            alt={project.title}
-            className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
-            
-            {project.label && (
-            <div className="absolute top-6 left-6">
-                <span className="px-3 py-1.5 text-xs font-bold text-slate-950 bg-cyan-400 rounded shadow-lg shadow-cyan-400/20 uppercase tracking-widest">
-                {project.label}
-                </span>
+        {/* Image Section */}
+        <div className="w-full relative shrink-0">
+          {project.images && project.images.length > 0 ? (
+            <div className="relative group/carousel">
+              <div 
+                id="modal-carousel"
+                className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar bg-white/5 h-64 md:h-80"
+                onScroll={(e) => {
+                  const scrollLeft = e.currentTarget.scrollLeft;
+                  const width = e.currentTarget.offsetWidth;
+                  const newIndex = Math.round(scrollLeft / width);
+                  const activeDot = document.getElementById(`dot-${newIndex}`);
+                  if (activeDot) {
+                    const dots = document.querySelectorAll('.carousel-dot');
+                    dots.forEach(d => d.classList.remove('bg-cyan-400', 'w-4'));
+                    dots.forEach(d => d.classList.add('bg-white/30', 'w-2'));
+                    activeDot.classList.remove('bg-white/30', 'w-2');
+                    activeDot.classList.add('bg-cyan-400', 'w-4');
+                  }
+                }}
+              >
+                {project.images.map((img, idx) => (
+                  <div key={idx} className="flex-none w-full h-full snap-center relative">
+                    <img
+                      src={img}
+                      alt={`${project.title} - image ${idx + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Carousel Dots */}
+              {project.images.length > 1 && (
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 bg-black/20 backdrop-blur-md px-3 py-2 rounded-full border border-white/5">
+                  {project.images.map((_, idx) => (
+                    <button
+                      key={idx}
+                      id={`dot-${idx}`}
+                      onClick={() => {
+                        const carousel = document.getElementById('modal-carousel');
+                        if (carousel) {
+                          carousel.scrollTo({
+                            left: idx * carousel.offsetWidth,
+                            behavior: 'smooth'
+                          });
+                        }
+                      }}
+                      className={`carousel-dot h-2 rounded-full transition-all duration-300 ${
+                        idx === 0 ? 'w-4 bg-cyan-400' : 'w-2 bg-white/30'
+                      }`}
+                      aria-label={`Go to image ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
-            )}
+          ) : (
+            <div className="w-full h-64 md:h-80 overflow-hidden bg-white/5 relative">
+              <img
+                src={project.imageUrl}
+                alt={project.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent pointer-events-none" />
+          
+          {project.label && (
+            <div className="absolute top-6 left-6 z-10">
+              <span className="px-3 py-1.5 text-xs font-bold text-slate-950 bg-cyan-400 rounded shadow-lg shadow-cyan-400/20 uppercase tracking-widest">
+                {project.label}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Details Section */}
@@ -131,15 +191,17 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <a
-                href={project.linkUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl transition-all shadow-lg shadow-cyan-500/20 gap-2"
-              >
-                Visit Project <FaExternalLinkAlt className="w-4 h-4" />
-              </a>
+            <div className={`grid grid-cols-1 ${project.linkUrl ? 'sm:grid-cols-2' : ''} gap-4`}>
+              {project.linkUrl && (
+                <a
+                  href={project.linkUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold rounded-xl transition-all shadow-lg shadow-cyan-500/20 gap-2"
+                >
+                  Visit Project <FaExternalLinkAlt className="w-4 h-4" />
+                </a>
+              )}
               
               {project.githubUrl && (
                 <a

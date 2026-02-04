@@ -218,7 +218,7 @@
     "Docker Compose",
     "Maven"
   ],
-  "imageUrl": "https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?w=600&h=400&fit=crop",
+  "imageUrl": "/src/assets/eventTickeingSystem.png",
   "linkUrl": "https://real-time-event-ticketing-system-jet.vercel.app/",
   "githubUrl": "https://github.com/yashith03/Real-time-Event-Ticketing-System",
   "features": [
@@ -242,7 +242,8 @@
   "title": "Task Manager",
   "description": "A full-stack offline-first task manager featuring optimistic UI updates, background data synchronization, and a robust PostgreSQL/Prisma backend. Designed for 100% availability even without an internet connection.",
   "tech": ["React", "Node.js", "Prisma", "PostgreSQL", "Docker", "Framer Motion"],
-  "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129cba2?w=600&h=400&fit=crop",
+  "imageUrl": "/src/assets/taskmanager1.png",
+  "images": ["/src/assets/taskmanager1.png", "/src/assets/taskmanager2.png"],
   "linkUrl": "https://task-manager001.vercel.app/",
   "githubUrl": "https://github.com/yashith03/Doodle-Tasks",
   "features": [
@@ -273,7 +274,8 @@
       "SVG",
       "Vercel"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=400&fit=crop",
+    "imageUrl": "/src/assets/zero-hunger.png",
+    "images": ["/src/assets/zero-hunger.png", "/src/assets/zero-hunger2.png", "/src/assets/zero-hunger3.png"],
     "linkUrl": "https://zero-hunger-website.vercel.app/",
     "githubUrl": "https://github.com/yashith03/Zero-Hunger-Website",
     "features": [
@@ -292,7 +294,50 @@
       "deployment": "Vercel deployment with optimized performance",
       "dataHandling": "Fetch API for dynamic product loading from JSON"
     }
+  },
+  {
+  "title": "Airplane Seat Management System",
+  "description": "A comprehensive Java-based management tool designed to streamline airline seat bookings. It features a robust seating grid, passenger data handling, and automated ticket generation with persistent file storage for transaction logging.",
+  "tech": [
+    "Java",
+    "OOP",
+    "File I/O",
+    "Data Validation"
+  ],
+  "imageUrl": "/src/assets/airplane management.png",
+  "linkUrl": "",
+  "githubUrl": "https://github.com/yashith03/Airplane-Seat-Management-System",
+  "features": [
+    "Developed a menu-driven console interface for real-time seat purchasing, cancellation, and searching.",
+    "Implemented a dynamic 2D array-based seating plan with ASCII visualization to track seat occupancy.",
+    "Engineered a robust input validation system to ensure correct seat selection (Rows A-D) and passenger data integrity.",
+    "Integrated automated file persistence to generate and save individual ticket receipts for every booking."
+  ],
+  "highlights": {
+    "architecture": "Modular Object-Oriented design with dedicated Person and Ticket classes for segregated data management.",
+    "visualization": "Real-time console-based occupancy map providing instant feedback on available and booked seats.",
+    "dataManagement": "Persistent logging system that records passenger details and sales revenue to local text files."
   }
+},
+  {
+  "title": "Academic Progression Predictor",
+  "description": "A robust Python-based tool designed for academic institutions to automate student progression analysis. It validates credit data, classifies outcomes according to university regulations, and generates dynamic visual histograms for educator-level insight.",
+  "tech": ["Python", "Tkinter", "File I/O", "Data Validation"],
+  "imageUrl": "/src/assets/studentProgress-predictor.png",
+  "linkUrl": "",
+  "githubUrl": "https://github.com/yashith03/Student-Progression-Outcome-Predictor",
+  "features": [
+    "Developed a dual-mode interface (Student/Teacher) to accommodate both individual and bulk data entry.",
+    "Engineered a dynamic graphical histogram using Tkinter for real-time visualization of academic results.",
+    "Implemented automated input validation ensuring total credit compliance (120 credits) and proper data types.",
+    "Integrated persistent file storage to log results for historical auditing and long-term tracking."
+  ],
+  "highlights": {
+    "architecture": "Modular script design with segregated logic for validation, processing, and rendering.",
+    "visualization": "Custom Tkinter-based Results Graph for instant data-driven academic analysis.",
+    "dataManagement": "Automated local logging system for reliable academic record-keeping."
+  }
+}
 
   ],
   "services": [

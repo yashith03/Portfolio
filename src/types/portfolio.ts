@@ -45,6 +45,7 @@ export interface ProjectItem {
   description: string;
   tech: string[];
   imageUrl?: string;
+  images?: string[];
   linkUrl: string;
   githubUrl?: string;
   features?: string[];
