@@ -90,7 +90,7 @@ export function HeroBento() {
         </div>
         <div className="shrink-0">
           <div className="px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full">
-            <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest">Active Roadmap</span>
+            <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest">ACTIVE LEARNING</span>
           </div>
         </div>
       </Card>

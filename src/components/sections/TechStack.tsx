@@ -7,6 +7,8 @@ import {
   FaDocker,
   FaFigma,
   FaJs,
+  FaJava,
+  FaPython,
 } from 'react-icons/fa';
 import {
   SiNextdotjs,
@@ -18,6 +20,12 @@ import {
   SiJest,
   SiSelenium,
   SiAppium,
+  SiNestjs,
+  SiExpress,
+  SiPrisma,
+  SiMongodb,
+  SiVercel,
+  SiGithubactions,
 } from 'react-icons/si';
 import { usePortfolioData } from '../../lib/usePortfolioData';
 import { Card } from '../ui/Card';
@@ -39,6 +47,14 @@ const iconMap: { [key: string]: React.ReactNode } = {
   selenium: <SiSelenium className="w-8 h-8" />,
   docker: <FaDocker className="w-8 h-8" />,
   figma: <FaFigma className="w-8 h-8" />,
+  java: <FaJava className="w-8 h-8" />,
+  python: <FaPython className="w-8 h-8" />,
+  nestjs: <SiNestjs className="w-8 h-8" />,
+  express: <SiExpress className="w-8 h-8" />,
+  prisma: <SiPrisma className="w-8 h-8" />,
+  mongodb: <SiMongodb className="w-8 h-8" />,
+  vercel: <SiVercel className="w-8 h-8" />,
+  cicd: <SiGithubactions className="w-8 h-8" />,
 };
 
 export function TechStack() {

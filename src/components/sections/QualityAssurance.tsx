@@ -18,14 +18,14 @@ export function QualityAssurance() {
       <div className="flex flex-col gap-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-widest w-fit">
           <FaVial className="animate-pulse" />
-          Reliability Engineer
+          QA & Automation Experience
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
           Quality Assurance & Testing
         </h2>
         <p className="text-white/60 max-w-2xl">
-          Bridging the gap between development and deployment with a rigorous focus on quality, 
-          automated validation, and user-centric testing.
+          Testing and QA skills are applied as part of a broader Software Engineering and Full-Stack Development workflow, 
+          supporting reliable backend services, stable frontend behavior, and maintainable systems.
         </p>
       </div>
 
@@ -44,10 +44,10 @@ export function QualityAssurance() {
                 <div className="p-3 rounded-lg bg-slate-900 border border-white/10 text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all duration-300">
                   {categoryIcons[item.icon as keyof typeof categoryIcons] || <FaSearch />}
                 </div>
-                <div className="flex flex-col items-end">
-                  <span className="text-[10px] text-white/40 font-bold uppercase tracking-wider">Metric</span>
-                  <span className="text-sm font-bold text-green-400 font-mono">PASS [100%]</span>
-                </div>
+              {/*  <div className="flex flex-col items-end">
+                 <span className="text-[10px] text-white/40 font-bold uppercase tracking-wider">Metric</span>
+                  <span className="text-sm font-bold text-green-400 font-mono">PASS [100%]</span> 
+                </div>*/}
               </div>
 
               {/* Card Content */}
@@ -80,7 +80,7 @@ export function QualityAssurance() {
       </div>
 
       {/* Experience Summary Bar */}
-      <div className="p-6 rounded-2xl bg-slate-900/50 border border-white/10 flex flex-wrap items-center justify-around gap-8 relative overflow-hidden group">
+    {/*  <div className="p-6 rounded-2xl bg-slate-900/50 border border-white/10 flex flex-wrap items-center justify-around gap-8 relative overflow-hidden group">
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
         
         <div className="flex flex-col items-center gap-1 z-10">
@@ -103,7 +103,7 @@ export function QualityAssurance() {
           <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Balance</span>
           <span className="text-sm font-bold text-white">Automation-First Approach</span>
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 }

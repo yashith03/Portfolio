@@ -80,6 +80,7 @@ export interface Contact {
   heading: string;
   description: string;
   email: string;
+  phone?: string;
   ctaText: string;
   responseTime: string;
 }

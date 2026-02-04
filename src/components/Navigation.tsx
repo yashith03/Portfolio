@@ -58,9 +58,13 @@ export function Navigation() {
                 e.preventDefault();
                 scrollToSection('hero');
               }}
-              className="text-lg font-bold text-white hover:text-cyan-400 transition-colors"
+              className="flex items-center gap-2 group"
             >
-              YC
+              <img 
+                src="/assets/favicon.png" 
+                alt="Logo" 
+                className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300" 
+              />
             </a>
 
             {/* Desktop Menu */}

@@ -1,27 +1,30 @@
 # 🚀 Modern Glassmorphism Portfolio
 
-A premium, high-performance developer portfolio built with **React**, **Vite**, **Tailwind CSS**, and **Framer Motion**. Featuring a custom-built GitHub contribution graph, dynamic project showcases, and a sleek bento-style design.
+A premium, high-performance developer portfolio for a **Software Engineering Undergraduate** specializing in **Full-Stack Development** and **Quality Assurance**. Built with **React**, **Vite**, **Tailwind CSS**, and **Framer Motion**, focusing on reliability and automated validation.
 
 ![Portfolio Preview](https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&h=600&fit=crop)
 
 ## ✨ Features
 
-- **💎 Modern Aesthetic**: Full glassmorphism design system with smooth gradients and backdrop blurs.
+- **💎 Modern Aesthetic**: Full glassmorphism design system with smooth gradients, vibrant accents, and backdrop blurs.
 - **📊 Live GitHub Graph**: Custom-themed, pixel-perfect GitHub contribution graph fetching real-time data via GraphQL.
-- **📱 Responsive Layout**: Fully optimized for mobile, tablet, and desktop screens.
+- **🧪 Focused QA Section**: Dedicated showcase for Automation Testing (Selenium, Appium), Manual Testing, and QA practices.
+- **� Learning & Certifications**: Chronological record of continuous learning, including Docker, Node.js, and Software Testing certifications.
+- **�📱 Responsive Layout**: Fully optimized for mobile, tablet, and desktop screens with seamless navigation.
 - **🎭 Smooth Animations**: Powered by Framer Motion for staggered entrances, hover effects, and modular transitions.
-- **📂 Dynamic Data**: Project and personal information centralized in a single JSON schema for easy updates.
-- **🚀 Performance-First**: Built with Vite for rapid development and optimized production bundles.
+- **📂 Dynamic Data**: Project and personal information centralized in a structured JSON schema for easy updates.
 
 ## 🛠 Tech Stack
 
-- **Frontend**: [React 18](https://reactjs.org/)
-- **Bundler**: [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Data Fetching**: GitHub GraphQL API
-- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
-- **Type Safety**: [TypeScript](https://www.typescriptlang.org/)
+- **Frontend**: [React 18](https://reactjs.org/), [Next.js](https://nextjs.org/)
+- **Languages**: TypeScript, JavaScript, Java, Python
+- **Backend & Database**: Node.js, NestJS, Express.js, Prisma, PostgreSQL, MongoDB, Supabase
+- **Mobile**: Expo (React Native)
+- **Testing**: Jest, Selenium, Appium
+- **DevOps**: Docker, GitHub Actions (CI/CD), Vercel
+- **Styling**: Tailwind CSS, CSS3, HTML5
+- **Animations**: Framer Motion
+- **Design**: Figma
 
 ## 🚀 Getting Started
 
@@ -57,17 +60,18 @@ npm run dev
 ```text
 src/
 ├── components/
-│   ├── ui/           # Reusable atomic components (Cards, Buttons, etc.)
-│   ├── sections/     # Main page sections (Hero, Projects, TechStack)
+│   ├── ui/           # Reusable atomic units (Cards, Buttons, LiveStatus, etc.)
+│   ├── sections/     # Main page content blocks (Hero, QA, Experience, Projects)
 ├── data/
-│   └── portfolio.json # The source of truth for all content
+│   └── portfolio.json # The single source of truth for all content
 ├── lib/
-│   ├── useGithubContributions.ts # API logic for GitHub activity
-│   └── usePortfolioData.ts       # Hook to access global portfolio data
-├── App.tsx           # Main application entry
-└── main.tsx          # React hydration
+│   ├── useGithubContributions.ts # GraphQL logic for GitHub activity
+│   └── usePortfolioData.ts       # Global state accessibility hook
+├── types/
+│   └── portfolio.ts  # Strong typing for the portfolio data structure
+├── App.tsx           # Application layout and suspense entry
+└── main.tsx          # React application root
 ```
-
 
 ## 📄 License
 

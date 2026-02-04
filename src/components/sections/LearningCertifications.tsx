@@ -22,7 +22,8 @@ export function LearningCertifications() {
           Learning & Certifications
         </h2>
         <p className="text-white/60 max-w-2xl">
-          A showcase of my continuous growth, online courses, and competitive achievements.
+          A focused record of continuous learning in full-stack development, software testing, and test automation, 
+          supported by hands-on project and application experience.
         </p>
       </div>
 

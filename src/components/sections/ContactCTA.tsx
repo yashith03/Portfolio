@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { usePortfolioData } from '../../lib/usePortfolioData';
 import { Card } from '../ui/Card';
@@ -28,6 +27,17 @@ export function ContactCTA() {
                 {data.contact.email}
               </a>
             </div>
+            {data.contact.phone && (
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-white/60">Phone:</span>
+                <a
+                  href={`tel:${data.contact.phone.replace(/\s/g, '')}`}
+                  className="text-white font-medium hover:text-cyan-400 transition-colors"
+                >
+                  {data.contact.phone}
+                </a>
+              </div>
+            )}
             <div className="flex items-center gap-3">
               <span className="text-sm text-white/60">Timezone:</span>
               <span className="text-white font-medium">
@@ -44,7 +54,8 @@ export function ContactCTA() {
         <div className="flex justify-end">
           <Button
             variant="primary"
-            href={`mailto:${data.contact.email}`}
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${data.contact.email}`}
+            target="_blank"
             className="text-lg px-8 py-4"
           >
             {data.contact.ctaText}
