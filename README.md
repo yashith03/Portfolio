@@ -2,7 +2,7 @@
 
 A premium, high-performance developer portfolio for a **Software Engineering Undergraduate** specializing in **Full-Stack Development** and **Quality Assurance**. Built with **React**, **Vite**, **Tailwind CSS**, and **Framer Motion**, focusing on reliability and automated validation.
 
-![Portfolio Preview](https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&h=600&fit=crop)
+![Portfolio Preview](public/assets/Portfolio.png)
 
 ## ✨ Features
 

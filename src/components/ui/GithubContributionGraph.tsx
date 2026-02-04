@@ -40,7 +40,7 @@ const ContributionGrid = memo(({ weeks, onHover, onLeave }: {
   onHover: (e: React.MouseEvent, day: DayType) => void;
   onLeave: () => void;
 }) => (
-  <div className="flex gap-[4px] overflow-x-auto pb-6 custom-scrollbar">
+  <div className="flex gap-[4px]">
     {weeks.map((week, weekIndex) => (
       <div key={weekIndex} className="flex flex-col gap-[4px] shrink-0">
         {week.contributionDays.map((day: DayType) => (
@@ -201,49 +201,51 @@ export default function GithubContributionGraph({ username }: GithubContribution
       </div>
 
       {/* Graph Area */}
-      <div className="relative z-10">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selectedYear}
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -10 }}
-            transition={{ duration: 0.2 }}
-          >
-            {/* Month Labels */}
-            <div className="flex mb-4 ml-[34px]">
-              <div className="flex gap-[4px] relative" style={{ width: `${activeCalendar.weeks.length * 15}px` }}>
-                {monthLabels.map((label, index) => (
-                  <span
-                    key={index}
-                    className="absolute text-[11px] font-bold text-white/30 uppercase tracking-widest"
-                    style={{ left: `${label.offset * 15}px` }}
-                  >
-                    {label.month}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex gap-[14px]">
-              {/* Weekday Labels */}
-              <div className="flex flex-col gap-[4px] text-[10px] font-bold text-white/20 pt-[22px] uppercase tracking-tighter">
-                <div className="h-[11px] flex items-center">Mon</div>
-                <div className="h-[11px]" />
-                <div className="h-[11px] flex items-center">Wed</div>
-                <div className="h-[11px]" />
-                <div className="h-[11px] flex items-center">Fri</div>
+      <div className="relative z-10 contribution-scroll pb-4 -mx-4 px-4">
+        <div className="min-w-[750px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedYear}
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -10 }}
+              transition={{ duration: 0.2 }}
+            >
+              {/* Month Labels */}
+              <div className="flex mb-4 ml-[34px]">
+                <div className="flex gap-[4px] relative" style={{ width: `${activeCalendar.weeks.length * 15}px` }}>
+                  {monthLabels.map((label, index) => (
+                    <span
+                      key={index}
+                      className="absolute text-[11px] font-bold text-white/30 uppercase tracking-widest"
+                      style={{ left: `${label.offset * 15}px` }}
+                    >
+                      {label.month}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              {/* Grid */}
-              <ContributionGrid 
-                weeks={activeCalendar.weeks} 
-                onHover={handleHover} 
-                onLeave={handleLeave} 
-              />
-            </div>
-          </motion.div>
-        </AnimatePresence>
+              <div className="flex gap-[14px]">
+                {/* Weekday Labels */}
+                <div className="flex flex-col gap-[4px] text-[10px] font-bold text-white/20 pt-[22px] uppercase tracking-tighter">
+                  <div className="h-[11px] flex items-center">Mon</div>
+                  <div className="h-[11px]" />
+                  <div className="h-[11px] flex items-center">Wed</div>
+                  <div className="h-[11px]" />
+                  <div className="h-[11px] flex items-center">Fri</div>
+                </div>
+
+                {/* Grid */}
+                <ContributionGrid 
+                  weeks={activeCalendar.weeks} 
+                  onHover={handleHover} 
+                  onLeave={handleLeave} 
+                />
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* Footer / Legend */}
@@ -300,12 +302,6 @@ export default function GithubContributionGraph({ username }: GithubContribution
         )}
       </AnimatePresence>
 
-      <style>{`
-        .custom-scrollbar::-webkit-scrollbar { height: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
-      `}</style>
     </div>
   );
 }

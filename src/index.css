@@ -10,7 +10,8 @@
     background: linear-gradient(135deg, #0b0f14 0%, #1a1f2e 50%, #0b0f14 100%);
   }
 
-  html {
+  html, body {
+    @apply overflow-x-hidden;
     scroll-behavior: smooth;
   }
 
@@ -38,5 +39,30 @@
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  .contribution-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .contribution-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .contribution-scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+
+  .contribution-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+
+  .contribution-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.1);
   }
 }
