@@ -1,4 +1,4 @@
-# 🚀 Modern Glassmorphism Portfolio
+# 🚀 Yashith Chandeepa-Portfolio
 
 A premium, high-performance developer portfolio for a **Software Engineering Undergraduate** specializing in **Full-Stack Development** and **Quality Assurance**. Built with **React**, **Vite**, **Tailwind CSS**, and **Framer Motion**, focusing on reliability and automated validation.
 
