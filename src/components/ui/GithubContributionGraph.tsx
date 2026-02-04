@@ -1,12 +1,60 @@
-import { useEffect, useState, useRef, useMemo } from "react";
+import { useEffect, useState, useRef, useMemo, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { fetchContributions, ContributionCalendar } from "../../lib/useGithubContributions";
+import { fetchContributions, ContributionCalendar, ContributionDay as DayType } from "../../lib/useGithubContributions";
 
 interface GithubContributionGraphProps {
   username: string;
 }
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+// Helper to get color
+const getColor = (count: number) => {
+  if (count === 0) return 'rgba(255,255,255,0.05)';
+  if (count <= 3) return '#0e4429';
+  if (count <= 6) return '#006d32';
+  if (count <= 9) return '#26a641';
+  return '#39d353';
+};
+
+// Memoized Individual Day
+const ContributionDay = memo(({ day, onHover, onLeave }: { 
+  day: DayType; 
+  onHover: (e: React.MouseEvent, day: DayType) => void;
+  onLeave: () => void;
+}) => (
+  <div
+    onMouseMove={(e) => onHover(e, day)}
+    onMouseLeave={onLeave}
+    className="w-[11px] h-[11px] rounded-[2px] transition-all duration-200 hover:scale-150 hover:z-20 hover:shadow-[0_0_10px_rgba(255,255,255,0.2)] cursor-crosshair opacity-80 hover:opacity-100 bg-[var(--day-color)]"
+    style={{ 
+      ['--day-color' as any]: getColor(day.contributionCount),
+      border: day.contributionCount === 0 ? '1px solid rgba(255,255,255,0.03)' : 'none'
+    }}
+  />
+));
+
+// Memoized Grid Section
+const ContributionGrid = memo(({ weeks, onHover, onLeave }: { 
+  weeks: any[]; 
+  onHover: (e: React.MouseEvent, day: DayType) => void;
+  onLeave: () => void;
+}) => (
+  <div className="flex gap-[4px] overflow-x-auto pb-6 custom-scrollbar">
+    {weeks.map((week, weekIndex) => (
+      <div key={weekIndex} className="flex flex-col gap-[4px] shrink-0">
+        {week.contributionDays.map((day: DayType) => (
+          <ContributionDay 
+            key={day.date} 
+            day={day} 
+            onHover={onHover} 
+            onLeave={onLeave} 
+          />
+        ))}
+      </div>
+    ))}
+  </div>
+));
 
 export default function GithubContributionGraph({ username }: GithubContributionGraphProps) {
   const currentYear = new Date().getFullYear();
@@ -64,13 +112,18 @@ export default function GithubContributionGraph({ username }: GithubContribution
     return labels;
   }, [activeCalendar]);
 
-  const getColor = (count: number) => {
-    if (count === 0) return 'rgba(255,255,255,0.05)';
-    if (count <= 3) return '#0e4429';
-    if (count <= 6) return '#006d32';
-    if (count <= 9) return '#26a641';
-    return '#39d353';
+  const handleHover = (e: React.MouseEvent, day: DayType) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setHoveredDay({
+      date: day.date,
+      count: day.contributionCount,
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
   };
+
+  const handleLeave = () => setHoveredDay(null);
 
   if (loading) {
     return (
@@ -183,33 +236,11 @@ export default function GithubContributionGraph({ username }: GithubContribution
               </div>
 
               {/* Grid */}
-              <div className="flex gap-[4px] overflow-x-auto pb-6 custom-scrollbar">
-                {activeCalendar.weeks.map((week, weekIndex) => (
-                  <div key={weekIndex} className="flex flex-col gap-[4px]">
-                    {week.contributionDays.map((day) => (
-                      <div
-                        key={day.date}
-                        onMouseMove={(e) => {
-                          if (!containerRef.current) return;
-                          const rect = containerRef.current.getBoundingClientRect();
-                          setHoveredDay({
-                            date: day.date,
-                            count: day.contributionCount,
-                            x: e.clientX - rect.left,
-                            y: e.clientY - rect.top
-                          });
-                        }}
-                        onMouseLeave={() => setHoveredDay(null)}
-                        className="w-[11px] h-[11px] rounded-[2px] transition-all duration-300 hover:scale-150 hover:z-20 hover:shadow-[0_0_10px_rgba(255,255,255,0.2)] cursor-crosshair opacity-80 hover:opacity-100"
-                        style={{ 
-                          backgroundColor: getColor(day.contributionCount),
-                          border: day.contributionCount === 0 ? '1px solid rgba(255,255,255,0.03)' : 'none'
-                        }}
-                      />
-                    ))}
-                  </div>
-                ))}
-              </div>
+              <ContributionGrid 
+                weeks={activeCalendar.weeks} 
+                onHover={handleHover} 
+                onLeave={handleLeave} 
+              />
             </div>
           </motion.div>
         </AnimatePresence>

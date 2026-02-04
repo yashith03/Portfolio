@@ -1,16 +1,18 @@
-import React from 'react';
+import { useState } from 'react';
 import { FaDownload, FaEnvelope } from 'react-icons/fa';
 import { usePortfolioData } from '../../lib/usePortfolioData';
 import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
-import { Stat } from '../ui/Stat';
+import { Toast } from '../ui/Toast';
 
 export function HeroBento() {
   const data = usePortfolioData();
-  const { personal, stats, currentRole, currentFocus } = data;
+  const { personal, currentFocus } = data;
+  const [showToast, setShowToast] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personal.email);
+    setShowToast(true);
   };
 
   return (
@@ -73,30 +75,31 @@ export function HeroBento() {
         </Card>
       </div>
 
-      {/* Stats Card */}
-      <Card className="lg:col-span-2 p-8 md:p-12">
-        <div className="grid grid-cols-3 gap-8">
-          <Stat
-            value={stats.yearsExperience}
-            label="Years Experience"
-          />
-          <Stat value={stats.projectsCount} label="Projects" />
-          <Stat value={stats.clientsCount} label="Clients" />
+      {/* Current Focus - Spanning full width for balance */}
+      <Card className="lg:col-span-3 p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+          <p className="text-xs text-white/60 uppercase tracking-widest mb-3">
+            Current Focus
+          </p>
+          <h3 className="text-xl font-bold text-white mb-2">
+            {currentFocus.title}
+          </h3>
+          <p className="text-sm text-white/60 leading-relaxed max-w-2xl">
+            {currentFocus.description}
+          </p>
+        </div>
+        <div className="shrink-0">
+          <div className="px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full">
+            <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest">Active Roadmap</span>
+          </div>
         </div>
       </Card>
 
-      {/* Current Focus */}
-      <Card className="p-8 flex flex-col justify-center">
-        <p className="text-xs text-white/60 uppercase tracking-widest mb-3">
-          Current Focus
-        </p>
-        <h3 className="text-sm font-semibold text-white mb-2">
-          {currentFocus.title}
-        </h3>
-        <p className="text-xs text-white/60 leading-relaxed">
-          {currentFocus.description}
-        </p>
-      </Card>
+      <Toast 
+        message="Email copied to clipboard!" 
+        isVisible={showToast} 
+        onClose={() => setShowToast(false)} 
+      />
     </div>
   );
 }

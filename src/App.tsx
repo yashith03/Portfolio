@@ -1,14 +1,23 @@
-
+import { Suspense, lazy } from 'react';
 import { Navigation } from './components/Navigation';
 import { HeroBento } from './components/sections/HeroBento';
-import { TechStack } from './components/sections/TechStack';
-import { ExperienceEducation } from './components/sections/ExperienceEducation';
-import { LearningCertifications } from './components/sections/LearningCertifications';
-import { QualityAssurance } from './components/sections/QualityAssurance';
-import { Projects } from './components/sections/Projects';
-import GithubContributionGraph from './components/ui/GithubContributionGraph';
-import { SocialLinks } from './components/sections/SocialLinks';
-import { ContactCTA } from './components/sections/ContactCTA';
+
+// Lazy load sections below the fold
+const TechStack = lazy(() => import('./components/sections/TechStack').then(m => ({ default: m.TechStack })));
+const ExperienceEducation = lazy(() => import('./components/sections/ExperienceEducation').then(m => ({ default: m.ExperienceEducation })));
+const LearningCertifications = lazy(() => import('./components/sections/LearningCertifications').then(m => ({ default: m.LearningCertifications })));
+const QualityAssurance = lazy(() => import('./components/sections/QualityAssurance').then(m => ({ default: m.QualityAssurance })));
+const Projects = lazy(() => import('./components/sections/Projects').then(m => ({ default: m.Projects })));
+const GithubContributionGraph = lazy(() => import('./components/ui/GithubContributionGraph'));
+const SocialLinks = lazy(() => import('./components/sections/SocialLinks').then(m => ({ default: m.SocialLinks })));
+const ContactCTA = lazy(() => import('./components/sections/ContactCTA').then(m => ({ default: m.ContactCTA })));
+
+// Loading Component
+const SectionLoading = () => (
+  <div className="w-full h-48 flex items-center justify-center">
+    <div className="w-8 h-8 border-2 border-cyan-500/20 border-t-cyan-500 rounded-full animate-spin" />
+  </div>
+);
 
 function App() {
   return (
@@ -23,76 +32,76 @@ function App() {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 space-y-20">
-        {/* Hero Section */}
-        <section id="hero">
-          <HeroBento />
-        </section>
+        <Suspense fallback={<SectionLoading />}>
+          {/* Hero Section */}
+          <section id="hero">
+            <HeroBento />
+          </section>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          {/* Divider */}
+          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        {/* Tech Stack */}
-        <section id="tech-stack">
-          <TechStack />
-        </section>
+          {/* Tech Stack */}
+          <section id="tech-stack">
+            <TechStack />
+          </section>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          {/* Divider */}
+          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        {/* Experience & Education */}
-        <section id="experience">
-          <ExperienceEducation />
-        </section>
+          {/* Experience & Education */}
+          <section id="experience">
+            <ExperienceEducation />
+          </section>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          {/* Divider */}
+          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        {/* Learning & Certifications */}
-        <section id="learning">
-          <LearningCertifications />
-        </section>
+          {/* Learning & Certifications */}
+          <section id="learning">
+            <LearningCertifications />
+          </section>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          {/* Divider */}
+          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        {/* Quality Assurance */}
-        <section id="qa">
-          <QualityAssurance />
-        </section>
+          {/* Quality Assurance */}
+          <section id="qa">
+            <QualityAssurance />
+          </section>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          {/* Divider */}
+          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        {/* Projects */}
-        <section id="projects">
-          <Projects />
-        </section>
+          {/* Projects */}
+          <section id="projects">
+            <Projects />
+          </section>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          {/* Divider */}
+          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        {/* GitHub Activity */}
-        <section id="github">
-          <GithubContributionGraph username="yashith03" />
-        </section>
+          {/* GitHub Activity */}
+          <section id="github">
+            <GithubContributionGraph username="yashith03" />
+          </section>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          {/* Divider */}
+          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
+          {/* Social Links */}
+          <section id="social">
+            <SocialLinks />
+          </section>
 
+          {/* Divider */}
+          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        {/* Social Links */}
-        <section id="social">
-          <SocialLinks />
-        </section>
-
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-        {/* Contact CTA */}
-        <section id="contact">
-          <ContactCTA />
-        </section>
+          {/* Contact CTA */}
+          <section id="contact">
+            <ContactCTA />
+          </section>
+        </Suspense>
 
         {/* Footer */}
         <footer className="pt-12 border-t border-white/5">

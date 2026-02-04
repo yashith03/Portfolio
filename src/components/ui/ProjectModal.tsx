@@ -84,6 +84,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                     <img
                       src={img}
                       alt={`${project.title} - image ${idx + 1}`}
+                      decoding="async"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -120,6 +121,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               <img
                 src={project.imageUrl}
                 alt={project.title}
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>

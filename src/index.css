@@ -13,13 +13,24 @@
   html {
     scroll-behavior: smooth;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer components {
   .glass {
-    @apply backdrop-blur-md bg-white/5 border border-white/10;
+    @apply backdrop-blur-md bg-white/5 border border-white/10 shadow-xl;
+    will-change: transform, opacity;
   }
 }
+
 @layer utilities {
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
