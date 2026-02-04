@@ -218,7 +218,7 @@
     "Docker Compose",
     "Maven"
   ],
-  "imageUrl": "/src/assets/eventTickeingSystem.png",
+  "imageUrl": "/assets/eventTickeingSystem.png",
   "linkUrl": "https://real-time-event-ticketing-system-jet.vercel.app/",
   "githubUrl": "https://github.com/yashith03/Real-time-Event-Ticketing-System",
   "features": [
@@ -242,8 +242,8 @@
   "title": "Task Manager",
   "description": "A full-stack offline-first task manager featuring optimistic UI updates, background data synchronization, and a robust PostgreSQL/Prisma backend. Designed for 100% availability even without an internet connection.",
   "tech": ["React", "Node.js", "Prisma", "PostgreSQL", "Docker", "Framer Motion"],
-  "imageUrl": "/src/assets/taskmanager1.png",
-  "images": ["/src/assets/taskmanager1.png", "/src/assets/taskmanager2.png"],
+  "imageUrl": "/assets/taskmanager1.png",
+  "images": ["/assets/taskmanager1.png", "/assets/taskmanager2.png"],
   "linkUrl": "https://task-manager001.vercel.app/",
   "githubUrl": "https://github.com/yashith03/Doodle-Tasks",
   "features": [
@@ -274,8 +274,8 @@
       "SVG",
       "Vercel"
     ],
-    "imageUrl": "/src/assets/zero-hunger.png",
-    "images": ["/src/assets/zero-hunger.png", "/src/assets/zero-hunger2.png", "/src/assets/zero-hunger3.png"],
+    "imageUrl": "/assets/zero-hunger.png",
+    "images": ["/assets/zero-hunger.png", "/assets/zero-hunger2.png", "/assets/zero-hunger3.png"],
     "linkUrl": "https://zero-hunger-website.vercel.app/",
     "githubUrl": "https://github.com/yashith03/Zero-Hunger-Website",
     "features": [
@@ -304,7 +304,7 @@
     "File I/O",
     "Data Validation"
   ],
-  "imageUrl": "/src/assets/airplane management.png",
+  "imageUrl": "/assets/airplane management.png",
   "linkUrl": "",
   "githubUrl": "https://github.com/yashith03/Airplane-Seat-Management-System",
   "features": [
@@ -323,7 +323,7 @@
   "title": "Academic Progression Predictor",
   "description": "A robust Python-based tool designed for academic institutions to automate student progression analysis. It validates credit data, classifies outcomes according to university regulations, and generates dynamic visual histograms for educator-level insight.",
   "tech": ["Python", "Tkinter", "File I/O", "Data Validation"],
-  "imageUrl": "/src/assets/studentProgress-predictor.png",
+  "imageUrl": "/assets/studentProgress-predictor.png",
   "linkUrl": "",
   "githubUrl": "https://github.com/yashith03/Student-Progression-Outcome-Predictor",
   "features": [
