@@ -164,7 +164,12 @@
       "Vercel",
       "GitHub Actions"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=400&fit=crop",
+    "imageUrl": "/assets/airecruiter1.png",
+    "images": [
+      "/assets/airecruiter1.png",
+      "/assets/airecruiter2.png",
+      "/assets/airecruiter3.png"
+    ],
     "linkUrl": "https://ai-recruiterapp.vercel.app",
     "githubUrl": "https://github.com/yashith03/AI-Recruiter2",
     "label": "FEATURED PROJECT",
@@ -202,7 +207,7 @@
       "Jest",
       "EAS Build"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6?w=600&h=400&fit=crop",
+    "imageUrl": "/assets/koreansupport.png",
     "linkUrl": "",
     "githubUrl": "https://github.com/yashith03/Korean-Support",
     "features": [
