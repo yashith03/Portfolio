@@ -9,7 +9,7 @@
     "timezone": "GMT+5:30",
     "email": "yashithc.dev@gmail.com",
     "cvUrl": "/Yashith_Chandeepa_CV.pdf",
-    "profileImageUrl": "/assets/Profile Picture.png",
+    "profileImageUrl": "/assets/profile-picture.png",
     "responseTimeNote": "Response time: Within 24 hours"
   },
   "stats": {
@@ -329,7 +329,7 @@
     "File I/O",
     "Data Validation"
   ],
-  "imageUrl": "/assets/airplane management.png",
+  "imageUrl": "/assets/airplane-management.png",
   "linkUrl": "",
   "githubUrl": "https://github.com/yashith03/Airplane-Seat-Management-System",
   "features": [
